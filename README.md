@@ -1,4 +1,5 @@
 # Shuddha Chowdhury's Portfolio Website
+   - Visit it here at - https://shuddha2021.vercel.app/
 
 Welcome to the GitHub repository of my personal portfolio website. This website showcases my skills, experience, and projects as a software engineer.
 
@@ -9,8 +10,6 @@ Welcome to the GitHub repository of my personal portfolio website. This website 
 - Features
 - Getting Started
 - Contact
-
-## Visit it here at - https://shuddha2021.vercel.app/
 
 ## About the Project
 
