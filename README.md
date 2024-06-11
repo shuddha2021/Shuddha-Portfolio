@@ -6,10 +6,15 @@ Welcome to the GitHub repository of my personal portfolio website. This website 
 ## Table of Contents
 
 - About the Project
-- Built With
+- Built With<img width="1186" alt="Screenshot 2024-06-11 at 4 40 45 PM" src="https://github.com/shuddha2021/Shuddha-Portfolio/assets/81951239/d93d4658-46bf-4297-98ba-68c91cfcda6f">
+
 - Features
 - Getting Started
 - Contact
+
+  
+![Uploading Screenshot 2024-06-11 at 4.40.45 PM.png…]()
+
 
 ## About the Project
 
