@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuddha Chowdhury - Portfolio</title>
     <style>
-        /* Global styles */
-
+        /* Global Styles */
         body {
             margin: 0;
-            font-family: sans-serif;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            margin: 0;
-            font-weight: normal;
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
         }
 
         a {
-            color: #000;
+            color: #007bff;
             text-decoration: none;
         }
 
@@ -25,17 +23,21 @@
             text-decoration: underline;
         }
 
-        /* Header */
-
-        header {
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        h1, h2, h3 {
+            margin: 0;
         }
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
+        /* Header */
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
         nav ul {
@@ -43,47 +45,83 @@
             margin: 0;
             padding: 0;
             display: flex;
+            justify-content: center;
         }
 
         nav li {
-            margin-right: 20px;
+            margin: 0 15px;
         }
 
         nav a {
-            font-size: 20px;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s ease;
         }
 
-        /* Main content */
+        nav a:hover {
+            color: #007bff;
+        }
 
+        /* Main Content */
         main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
+            max-width: 1000px;
+            margin: 120px auto 40px;
+            padding: 0 20px;
         }
 
         section {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
-            font-size: 24px;
+            font-size: 28px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
             margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: -100%;
+            background-color: #007bff;
+            transition: left 0.5s ease;
+        }
+
+        h2:hover:before {
+            left: 0;
+        }
+
+        p, li {
+            line-height: 1.6;
         }
 
         ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            padding-left: 20px;
         }
 
-        li {
-            margin-bottom: 20px;
+        ol {
+            list-style: decimal;
+            padding-left: 20px;
         }
 
+        /* Contact Form */
         form {
             display: flex;
             flex-direction: column;
-            max-width: 500px;
         }
 
         label {
@@ -96,33 +134,91 @@
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 4px;
-            border: 1px solid #ccc;
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007bff;
         }
 
         input[type="submit"] {
-            background-color: #000;
+            background-color: #007bff;
             color: #fff;
             border: none;
             cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            align-self: flex-start;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #333;
+            background-color: #0056b3;
         }
 
         /* Footer */
-
         footer {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
+        }
+
+        .profile-img {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .job-title {
+            font-weight: bold;
+        }
+
+        .job-duration {
+            font-style: italic;
+        }
+
+        .job-details ol {
+            margin-top: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.1s;
+        }
+
+        section:nth-child(odd) {
+            animation-delay: 0.2s;
         }
     </style>
 </head>
 <body>
+
 <header>
-    <h1>Shuddha's Portfolio</h1>
+    <h1>Shuddha Chowdhury - Portfolio</h1>
     <nav>
         <ul>
             <li><a href="#about">About</a></li>
@@ -134,101 +230,140 @@
 </header>
 
 <main>
-    <section id="about">
+    <section id="about" class="visible">
         <h2>About Me</h2>
-        <p>Hi, my name is Shuddha Chowdhury and I'm a highly experienced software engineer with over 8 years of experience in developing, testing, debugging, and enhancing web applications using Angular, React, Java, Python, JavaScript, HTML, CSS, and AWS. A team player who collaborates effectively with other engineers, product managers, and clients to deliver high-quality software solutions that exceed customer expectations.<br><br>
-            <a href="https://ibb.co/nw82Kgx"><img src="https://i.ibb.co/sgJSXm8/IMG-1494.jpg" alt="Shuddha Chowdhury" style="display: block; margin: 0 auto; width: 300px;"></a>
-        </p>
+        <p>Hi, my name is Shuddha Chowdhury and I'm a highly experienced software engineer with over 8 years of experience in developing, testing, debugging, and enhancing web applications using Angular, React, Java, Python, JavaScript, HTML, CSS, and AWS. A team player who collaborates effectively with other engineers, product managers, and clients to deliver high-quality software solutions that exceed customer expectations.</p>
+        <img src="https://i.ibb.co/sgJSXm8/IMG-1494.jpg" alt="Shuddha Chowdhury" class="profile-img">
     </section>
 
     <section id="experience">
         <h2>Experience</h2>
         <ul>
             <li>
-                <h3><strong>Software Engineer</strong></h3>
-                <p>SEQTEK | Tulsa, Ok | July 2023 - Present</p>
-                <ol>
-                    <li>Refactor and improve Complete Health software projects with React and ASP.Net, meeting client requirements and coding standards, increasing software quality by 80% and reducing software defects by 85%.</li>
-                    <li>Write, test, and debug code following software engineering principles and best practices, reducing errors and bugs by 50%.</li>
-                    <li>Collaborate with other engineers to design and implement software architecture and make changes as needed, enhancing software performance and functionality by 70%.</li>
-                    <li>Train new engineers and help them onboard faster, increasing their productivity and efficiency by 40%.</li>
-                    <li>Spearhead the integration of CI/CD pipelines, enhancing deployment frequency by 60%.</li>
-                    <li>Lead a cross-functional team in adopting microservices architecture, resulting in a 30% improvement in system resilience and scalability.</li>
-                    <li>Initiate and drive the adoption of code review practices, improving team code quality and collaboration.</li>
-                </ol>
+                <h3><span class="job-title">Software Engineer</span> <span class="job-duration">| SEQTEK | Tulsa, OK | Jul 2023 – Present</span></h3>
+                <div class="job-details">
+                    <ol>
+                        <li>Refactor and improve Complete Health software projects with React and ASP.Net, meeting client requirements and coding standards, significantly enhancing software quality and reducing defects.</li>
+                        <li>Write, test, and debug code following software engineering principles and best practices, effectively minimizing errors and bugs.</li>
+                        <li>Collaborate with other engineers to design and implement software architecture, making necessary changes to enhance performance and functionality.</li>
+                        <li>Train new engineers and facilitate faster onboarding, increasing their productivity and efficiency.</li>
+                        <li>Spearhead the integration of CI/CD pipelines, enhancing deployment frequency and reliability.</li>
+                        <li>Lead a cross-functional team in adopting microservices architecture, improving system resilience and scalability.</li>
+                        <li>Initiate and drive the adoption of code review practices, improving team code quality and collaboration.</li>
+                    </ol>
+                </div>
             </li>
             <li>
-                <h3><strong>Software Engineering Technical Expert</strong></h3>
-                <p>Chegg, Inc. | Tulsa, OK | Jul 2020 – Present</p>
-                <ol>
-                    <li>Facilitate personalized technical support in 1-on-1 online sessions, advancing students’ learning and increasing student satisfaction scores by 30%.</li>
-                    <li>Respond promptly to technical questions and guidance needs, improving response times by 40% and enhancing the coaching team’s efficiency.</li>
-                    <li>Conduct mock interviews, providing targeted feedback that increases student job offer rates by 20%.</li>
-                    <li>Develop and lead workshops on software engineering best practices, raising team skill levels by 25% and boosting project delivery efficiency by 15%.</li>
-                    <li>Serve as a technical mentor for junior engineers, fostering a culture of continuous learning and improving team performance by 35%.</li>
-                </ol>
+                <h3><span class="job-title">Software Engineering Technical Expert</span> <span class="job-duration">| Chegg, Inc. | Tulsa, OK | Jul 2020 – Present</span></h3>
+                <div class="job-details">
+                    <ol>
+                        <li>Facilitate personalized technical support in 1-on-1 online sessions, advancing students’ learning and increasing their satisfaction.</li>
+                        <li>Respond promptly to technical questions and guidance needs, improving response times and the coaching team’s efficiency.</li>
+                        <li>Conduct mock interviews, providing targeted feedback that enhances student job offer rates.</li>
+                        <li>Develop and lead workshops on software engineering best practices, raising team skill levels and boosting project delivery efficiency.</li>
+                        <li>Serve as a technical mentor for junior engineers, fostering a culture of continuous learning and improving team performance.</li>
+                    </ol>
+                </div>
             </li>
             <li>
-                <h3><strong>Software Engineer II (Full Stack Software Developer)</strong></h3>
-                <p>Forcepoint | Tulsa, Ok (Remote) | September 2021 - March 2023</p>
-                <ol>
-                    <li>Built UI features for FBA software using React, JavaScript, HTML, and CSS, increasing the usability and functionality of the product for major clients like Credit Suisse and BNPP by 50%.</li>
-                    <li>Provided Engineering Escalation support to major clients and reduced the resolution time of their issues by 40% by collaborating with other engineers.</li>
-                    <li>Enhanced the FBA product by debugging and testing code in Java based on client requests, improving the performance and reliability of the product by 3x.</li>
-                    <li>Championed the implementation of automated testing frameworks, reducing manual testing hours by 75%.</li>
-                    <li>Acted as the technical liaison between engineering and product management teams, ensuring alignment on product vision and technical feasibility.</li>
-                </ol>
+                <h3><span class="job-title">Software Engineer II (Full Stack Software Developer)</span> <span class="job-duration">| Forcepoint | Tulsa, OK | Sep 2021 – Mar 2023</span></h3>
+                <div class="job-details">
+                    <ol>
+                        <li>Built UI features for FBA software using React, JavaScript, HTML, and CSS, enhancing usability and functionality for major clients.</li>
+                        <li>Provided Engineering Escalation support to major clients, reducing issue resolution time through effective collaboration with other engineers.</li>
+                        <li>Enhanced the FBA product by debugging and testing code, maintaining product quality and performance.</li>
+                        <li>Developed and optimized backend components using Python and Java, ensuring seamless integration with frontend systems.</li>
+                        <li>Mentored junior developers, sharing knowledge and improving the overall capability of the team.</li>
+                        <li>Led the implementation of automated testing frameworks, increasing test coverage and reducing regression issues.</li>
+                        <li>Optimized application load times by 30% through performance tuning and code refactoring.</li>
+                        <li>Implemented a new logging system that improved error tracking and debugging efficiency.</li>
+                        <li>Collaborated with UX designers to revamp the user interface, leading to a 25% increase in user satisfaction scores.</li>
+                    </ol>
+                </div>
             </li>
             <li>
-                <h3><strong>Full Stack Software Developer</strong></h3>
-                <p>Enhatch Inc. | Tulsa, Ok (Remote) | April 2021 - June 2021</p>
-                <ol>
-                    <li>Developed and enhanced front-end and back-end applications using ColdFusion and CFWheels Framework, adhering to MVC architecture and client requirements, increasing the functionality and usability of the product by 70%.</li>
-                    <li>Regularly tested code functionality and reported performance improvement suggestions, resulting in 3x faster and more reliable code.</li>
-                    <li>Collaborated with the product manager to ensure that Agile user stories were met, delivering high-quality software solutions that exceed customer needs and expectations.</li>
-                    <li>Implemented responsive design principles to ensure cross-platform compatibility and optimal user experience, improving customer satisfaction ratings by 25%.</li>
-                    <li>Integrated RESTful API services, enhancing the application’s communication with third-party services and increasing data throughput by 40%.</li>
-                    <li>Led a DevOps initiative to automate the deployment process, reducing deployment time by 50% and increasing release frequency.</li>
-                    <li>Mentored junior developers in best coding practices and modern development frameworks, raising team productivity by 35%.</li>
-                    <li>Conducted comprehensive security audits of the application stack, strengthening system security by identifying and mitigating potential vulnerabilities.</li>
-                </ol>
-            </li>
-            <li>
-                <h3><strong>Software Developer</strong></h3>
-                <p>Software Engineering Architecture Team | University of Tulsa| Tulsa, OK | Aug 2016 – Jul 2020</p>
-                <ol>
-                    <li>Collaborated with a team of engineers using Java and Git to develop and maintain software solutions, ensuring alignment with architectural standards and improving system architecture compliance by 90%.</li>
-                    <li>Engaged in code reviews and pair programming sessions with Python and React, enhancing code quality and team knowledge sharing, increasing code maintainability by 35%.</li>
-                    <li>Checked software dependencies for simulation algorithms across various programming versions including C++ and MATLAB, and prepared documentation, ensuring 100% compatibility and reliability of the software.</li>
-                    <li>Tested and ran GenProg Automatic Code Repair software on C# projects and documented software efficiency, demonstrating the effectiveness of the software in repairing bugs, reducing bug resolution time by 50%.</li>
-                    <li>Co-authored research papers on software engineering topics using LaTeX and R Markdown, contributing to the university’s academic reputation in the tech community and increasing citation count by 20%.</li>
-                    <li>Organized and led study groups for advanced programming topics in JavaScript and SQL, aiding in the academic success of peers and improving peer performance by 40%.</li>
-                </ol>
+                <h3><span class="job-title">Full Stack Software Developer</span> <span class="job-duration">| Enhatch Inc. | Tulsa, OK | Jul 2020 – Jul 2021</span></h3>
+                <div class="job-details">
+                    <ol>
+                        <li>Designed and implemented user-friendly web applications using JavaScript, Java, Python, and AWS, aligning with user needs and project requirements.</li>
+                        <li>Enhanced the functionality and performance of existing web applications by debugging and testing code.</li>
+                        <li>Collaborated with a team of engineers to develop software solutions, improving project delivery and software quality.</li>
+                        <li>Led the transition to a new tech stack, improving application performance and maintainability.</li>
+                        <li>Facilitated training sessions on new technologies for the team, enhancing overall technical proficiency and adaptability.</li>
+                        <li>Conducted usability testing sessions, gathering user feedback to refine and optimize application interfaces.</li>
+                    </ol>
+                </div>
             </li>
         </ul>
     </section>
 
     <section id="projects">
-        <h2>Key Projects</h2>
-        <ol>
-            <li>Complete Health Software Refactoring Initiative </li>
-            <li>Forcepoint Behavioral Analytics Review Dashboard Page Enhancement Project based on Customer's Requirement</li>
-            <li>Forcepoint UEBA Explore page feature enable disable work based on customer's ask</li>
-            <li>Enhatch Web Application Overhaul</li>
-            <li>Halliburton's Integration of 4D Seismic, Electromagnetic & Gravity Data for Improved Reservoir Modeling with EnKF</li>
-        </ol>
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <h3>Complete Health Software Refactoring Initiative | Software Engineer | SEQTEK | Tulsa, OK</h3>
+                <p>
+                <ol>
+                    <li>Orchestrated a comprehensive refactoring strategy for healthcare software, enhancing system robustness and maintainability.</li>
+                    <li>Integrated advanced React features and ASP.NET optimizations, improving application performance.</li>
+                    <li>Pioneered a code quality initiative that resulted in decreased defect rates and bolstered overall software resilience.</li>
+                    <li>Developed a dynamic user interface, improving user engagement and reducing bounce rates.</li>
+                    <li>Automated repetitive development tasks, increasing team productivity and reducing time-to-market.</li>
+                </ol>
+                </p>
+            </li>
+            <li>
+                <h3>FBA UEBA User Interface Enhancement | Software Engineer II (Full Stack Developer) | Forcepoint | Tulsa, OK</h3>
+                <p>
+                <ol>
+                    <li>Directed the UI enhancement project for FBA UEBA, focusing on user experience and design, leading to increased client satisfaction.</li>
+                    <li>Implemented a series of performance improvements, reducing load times and enhancing application responsiveness.</li>
+                    <li>Initiated a client-focused engineering support program, improving issue resolution efficiency and customer service ratings.</li>
+                    <li>Optimized application security measures, ensuring compliance with the latest industry standards and reducing vulnerability exposure.</li>
+                    <li>Enhanced data visualization features, providing clients with more insightful analytics and reporting capabilities.</li>
+                </ol>
+                </p>
+            </li>
+            <li>
+                <h3>Enhatch Web Application Overhaul | Full Stack Software Developer | Enhatch Inc. | Tulsa, OK</h3>
+                <p>
+                <ol>
+                    <li>Led the redesign of the Enhatch web application, employing cutting-edge technologies to modernize both front-end and back-end systems.</li>
+                    <li>Established a new benchmark for application performance, achieving a significant increase in speed and reliability through innovative coding practices.</li>
+                    <li>Fostered a culture of excellence in software development, ensuring the delivery of high-quality solutions that consistently exceeded client expectations.</li>
+                    <li>Implemented modular design principles, facilitating easier updates and maintenance, and reducing downtime.</li>
+                    <li>Streamlined the development workflow, incorporating agile methodologies that improved project turnaround time.</li>
+                </ol>
+                </p>
+            </li>
+            <li>
+                <h3>EnKF Cloud Deployment for Reservoir Characterization | Software Developer Intern | Halliburton | Houston, TX</h3>
+                <p>
+                <ol>
+                    <li>Contributed to a groundbreaking project deploying the Ensemble Kalman Filter algorithm on AWS, enhancing data assimilation for reservoir characterization.</li>
+                    <li>Demonstrated exceptional collaboration and technical skills, contributing to a successful proof of concept within a stringent three-month deadline.</li>
+                    <li>Acquired and applied new knowledge in reservoir engineering, showcasing adaptability and a strong aptitude for interdisciplinary learning.</li>
+                    <li>Facilitated cross-departmental communication, bridging the gap between software development and geological analysis teams.</li>
+                    <li>Participated in knowledge-sharing sessions, presenting findings to stakeholders and contributing to the company’s innovation pipeline.</li>
+                </ol>
+                </p>
+            </li>
+        </ul>
     </section>
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <form>
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name">
+            <input type="text" id="name" name="name" required>
+
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email">
+            <input type="email" id="email" name="email" required>
+
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Type your message here"></textarea>
-            <input type="submit" value="Send">
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <input type="submit" value="Send Message">
         </form>
     </section>
 </main>
@@ -236,5 +371,29 @@
 <footer>
     <p>&copy; 2024 Shuddha Chowdhury</p>
 </footer>
+
+<script>
+    // Intersection Observer for simple fade-in and slide-up effect
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll('section');
+        const options = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
+
 </body>
 </html>
