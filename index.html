@@ -3,334 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shuddha Chowdhury - Portfolio</title>
+    <title>Shuddha Chowdhury - Software Engineer Portfolio</title>
     <style>
-        /* Global Styles */
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #4caf50;
+            --text-color: #333;
+            --background-color: #f5f5f5;
+            --card-background: #ffffff;
+            --accent-color: #ff4081;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #333;
-            background-color: #f8f9fa;
-            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
         }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        h1, h2, h3 {
-            margin: 0;
-        }
-
-        /* Header */
         header {
-            background-color: #343a40;
+            background-color: var(--primary-color);
             color: #fff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        nav li {
-            margin: 0 15px;
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
         }
-
-        nav a {
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
             color: #fff;
-            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        main {
+            margin-top: 80px;
+        }
+        section {
+            padding: 60px 0;
+        }
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+        }
+        h2 {
+            font-size: 2em;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card h3 {
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+        .card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .card ul li::before {
+            content: "•";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        #about{
+            margin-bottom: 10px; /* Adjust this value to reduce the gap */
+        }
+        #experience{
+            margin-top: 10px;
+        }
+        #skills {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .skill-category li {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        #skills h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+        .project {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .project img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .project:hover img {
+            transform: scale(1.1);
+        }
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(26, 35, 126, 0.9);
+            color: #fff;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .project:hover .project-info {
+            transform: translateY(0);
+        }
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .skill {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+        .skill:hover {
+            background-color: var(--primary-color);
+        }
+        #projects {
+            margin-bottom: 40px;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .project {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .project-details {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .project ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .project li {
+            margin-bottom: 5px;
+        }
+        #contact {
+            background-color: #1a237e;
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: inline-block;
+            text-align: left;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-info a {
+            color: #64ffda;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: #007bff;
+        .contact-info a:hover {
+            color: #b2ffff;
+            text-decoration: underline;
         }
-
-        /* Main Content */
-        main {
-            max-width: 1000px;
-            margin: 120px auto 40px;
-            padding: 0 20px;
-        }
-
-        section {
-            margin-bottom: 60px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            font-size: 28px;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        h2:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: 0;
-            left: -100%;
-            background-color: #007bff;
-            transition: left 0.5s ease;
-        }
-
-        h2:hover:before {
-            left: 0;
-        }
-
-        p, li {
-            line-height: 1.6;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        ol {
-            list-style: decimal;
-            padding-left: 20px;
-        }
-
-        /* Contact Form */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        input, textarea {
-            font-size: 16px;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            border: 1px solid #ced4da;
-            transition: border-color 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            border-color: #007bff;
-        }
-
-        input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            padding: 10px 20px;
-            font-size: 16px;
-            align-self: flex-start;
-            transition: background-color 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        /* Footer */
         footer {
-            background-color: #343a40;
+            background-color: var(--primary-color);
             color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 20px 0;
+            margin-top: 40px;
         }
-
         .profile-img {
-            display: block;
-            margin: 20px auto;
             width: 200px;
+            height: 200px;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            object-fit: cover;
+            margin-top: 20px; /* This will push the image down */
+            position: relative;
+            z-index: 1;
         }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        .job-title {
-            font-weight: bold;
-        }
-
-        .job-duration {
-            font-style: italic;
-        }
-
-        .job-details ol {
-            margin-top: 10px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                margin-bottom: 20px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            nav ul {
+                margin-top: 20px;
             }
-        }
-
-        section {
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        section:nth-child(even) {
-            animation-delay: 0.1s;
-        }
-
-        section:nth-child(odd) {
-            animation-delay: 0.2s;
+            nav ul li {
+                margin: 10px 0;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
 <header>
-    <h1>Shuddha Chowdhury - Portfolio</h1>
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <nav>
+            <div class="logo">Shuddha Chowdhury</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
-<main>
-    <section id="about" class="visible">
+<main class="container">
+    <section id="about">
+        <img src="https://i.ibb.co/sgJSXm8/IMG-1494.jpg" alt="Shuddha Chowdhury" class="profile-img">
         <h2>About Me</h2>
         <p>Hi, my name is Shuddha Chowdhury and I'm a highly experienced software engineer with over 8 years of experience in developing, testing, debugging, and enhancing web applications using Angular, React, Java, Python, JavaScript, HTML, CSS, and AWS. A team player who collaborates effectively with other engineers, product managers, and clients to deliver high-quality software solutions that exceed customer expectations.</p>
-        <img src="https://i.ibb.co/sgJSXm8/IMG-1494.jpg" alt="Shuddha Chowdhury" class="profile-img">
     </section>
 
     <section id="experience">
         <h2>Experience</h2>
-        <ul>
-            <li>
-                <h3><span class="job-title">Software Engineer</span> <span class="job-duration">| SEQTEK | Tulsa, OK | Jul 2023 – Present</span></h3>
-                <div class="job-details">
-                    <ol>
-                        <li>Refactor and improve Complete Health software projects with React and ASP.Net, meeting client requirements and coding standards, significantly enhancing software quality and reducing defects.</li>
-                        <li>Write, test, and debug code following software engineering principles and best practices, effectively minimizing errors and bugs.</li>
-                        <li>Collaborate with other engineers to design and implement software architecture, making necessary changes to enhance performance and functionality.</li>
-                        <li>Train new engineers and facilitate faster onboarding, increasing their productivity and efficiency.</li>
-                        <li>Spearhead the integration of CI/CD pipelines, enhancing deployment frequency and reliability.</li>
-                        <li>Lead a cross-functional team in adopting microservices architecture, improving system resilience and scalability.</li>
-                        <li>Initiate and drive the adoption of code review practices, improving team code quality and collaboration.</li>
-                    </ol>
-                </div>
-            </li>
-            <li>
-                <h3><span class="job-title">Software Engineering Technical Expert</span> <span class="job-duration">| Chegg, Inc. | Tulsa, OK | Jul 2020 – Present</span></h3>
-                <div class="job-details">
-                    <ol>
-                        <li>Facilitate personalized technical support in 1-on-1 online sessions, advancing students’ learning and increasing their satisfaction.</li>
-                        <li>Respond promptly to technical questions and guidance needs, improving response times and the coaching team’s efficiency.</li>
-                        <li>Conduct mock interviews, providing targeted feedback that enhances student job offer rates.</li>
-                        <li>Develop and lead workshops on software engineering best practices, raising team skill levels and boosting project delivery efficiency.</li>
-                        <li>Serve as a technical mentor for junior engineers, fostering a culture of continuous learning and improving team performance.</li>
-                    </ol>
-                </div>
-            </li>
-            <li>
-                <h3><span class="job-title">Software Engineer II (Full Stack Software Developer)</span> <span class="job-duration">| Forcepoint | Tulsa, OK | Sep 2021 – Mar 2023</span></h3>
-                <div class="job-details">
-                    <ol>
-                        <li>Built UI features for FBA software using React, JavaScript, HTML, and CSS, enhancing usability and functionality for major clients.</li>
-                        <li>Provided Engineering Escalation support to major clients, reducing issue resolution time through effective collaboration with other engineers.</li>
-                        <li>Enhanced the FBA software backend using Java and AWS, significantly improving application performance and scalability.</li>
-                        <li>Assisted in the integration of Machine Learning algorithms into FBA software, driving innovation and enhancing user experience.</li>
-                        <li>Authored comprehensive documentation, ensuring clarity and consistency across team communications.</li>
-                        <li>Revamped the incident management process, increasing resolution efficiency and reducing client impact time.</li>
-                        <li>Implemented performance monitoring tools, leading to a 20% reduction in application response times.</li>
-                        <li>Led an initiative to refactor legacy code, improving system maintainability and developer onboarding times.</li>
-                    </ol>
-                </div>
-            </li>
-            <li>
-                <h3><span class="job-title">Full Stack Software Developer</span> <span class="job-duration">| Enhatch Inc. | Tulsa, OK | Apr 2021 – Jun 2021</span></h3>
-                <div class="job-details">
-                    <ol>
-                        <li>Developed and enhanced front-end and back-end applications using ColdFusion and CFWheels Framework, adhering to MVC architecture and client requirements.</li>
-                        <li>Regularly tested code functionality and reported performance improvement suggestions, resulting in faster and more reliable code.</li>
-                        <li>Collaborated with the product manager to ensure Agile user stories were met, delivering high-quality software solutions.</li>
-                        <li>Implemented responsive design principles to ensure cross-platform compatibility and optimal user experience.</li>
-                        <li>Integrated RESTful API services, enhancing application communication with third-party services and increasing data throughput.</li>
-                        <li>Led a DevOps initiative to automate the deployment process, reducing deployment time and increasing release frequency.</li>
-                        <li>Mentored junior developers in best coding practices and modern development frameworks, raising team productivity.</li>
-                        <li>Conducted comprehensive security audits of the application stack, strengthening system security by identifying and mitigating potential vulnerabilities.</li>
-                    </ol>
-                </div>
-            </li>
-            <li>
-                <h3><span class="job-title">Software Developer</span> <span class="job-duration">| University of Tulsa | Tulsa, OK | Aug 2016 – Jul 2020</span></h3>
-                <div class="job-details">
-                    <ol>
-                        <li>Designed and implemented user-friendly web applications using JavaScript, Java, Python, and AWS, aligning with user needs and project requirements.</li>
-                        <li>Enhanced the functionality and performance of existing web applications by debugging and testing code.</li>
-                        <li>Collaborated with a team of engineers to develop software solutions, improving project delivery and software quality.</li>
-                        <li>Led the transition to a new tech stack, improving application performance and maintainability.</li>
-                        <li>Facilitated training sessions on new technologies for the team, enhancing overall technical proficiency and adaptability.</li>
-                        <li>Conducted usability testing sessions, gathering user feedback to refine and optimize application interfaces.</li>
-                    </ol>
-                </div>
-            </li>
-            <li>
-                <h3><span class="job-title">Software Developer Intern</span> <span class="job-duration">| Halliburton | Houston, TX | Jun 2018 – Aug 2018</span></h3>
-                <div class="job-details">
-                    <ol>
-                        <li>Developed three web services applications in Java for data file uploading, simulation parameters passing, and Spark application execution.</li>
-                        <li>Implemented and deployed the Ensemble Kalman Filter (EnKF) data assimilation algorithm on the AWS cloud platform, enhancing scalability and performance.</li>
-                        <li>Executed and assessed the performance of 100 simulation algorithms on the Apache Spark platform, focusing on precision and efficiency.</li>
-                        <li>Optimized cloud resource utilization, reducing operational costs while maintaining algorithm performance.</li>
-                        <li>Collaborated with cross-functional teams to integrate the EnKF algorithm into the existing workflow, improving data analysis throughput.</li>
-                        <li>Authored technical documentation on the deployment process and algorithm usage, facilitating knowledge transfer and increasing team efficiency.</li>
-                    </ol>
-                </div>
-            </li>
-        </ul>
+        <div class="grid">
+            <div class="card">
+                <h3>Software Engineer</h3>
+                <p>SEQTEK | Tulsa, OK | Jul 2023 – Present</p>
+                <ul>
+                    <li>Refactor and improve Complete Health software projects with React and ASP.Net, meeting client requirements and coding standards, significantly enhancing software quality and reducing defects.</li>
+                    <li>Write, test, and debug code following software engineering principles and best practices, effectively minimizing errors and bugs.</li>
+                    <li>Collaborate with other engineers to design and implement software architecture, making necessary changes to enhance performance and functionality.</li>
+                    <li>Train new engineers and facilitate faster onboarding, increasing their productivity and efficiency.</li>
+                    <li>Spearhead the integration of CI/CD pipelines, enhancing deployment frequency and reliability.</li>
+                    <li>Lead a cross-functional team in adopting microservices architecture, improving system resilience and scalability.</li>
+                    <li>Initiate and drive the adoption of code review practices, improving team code quality and collaboration.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Software Engineering Technical Expert</h3>
+                <p>Chegg, Inc. | Tulsa, OK | Jul 2020 – Present</p>
+                <ul>
+                    <li>Facilitate personalized technical support in 1-on-1 online sessions, advancing students' learning and increasing their satisfaction.</li>
+                    <li>Respond promptly to technical questions and guidance needs, improving response times and the coaching team's efficiency.</li>
+                    <li>Conduct mock interviews, providing targeted feedback that enhances student job offer rates.</li>
+                    <li>Develop and lead workshops on software engineering best practices, raising team skill levels and boosting project delivery efficiency.</li>
+                    <li>Serve as a technical mentor for junior engineers, fostering a culture of continuous learning and improving team performance.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Software Engineer II (Full Stack Software Developer)</h3>
+                <p>Forcepoint | Tulsa, OK | Sep 2021 – Mar 2023</p>
+                <ul>
+                    <li>Built UI features for FBA software using React, JavaScript, HTML, and CSS, enhancing usability and functionality for major clients.</li>
+                    <li>Provided Engineering Escalation support to major clients, reducing issue resolution time through effective collaboration with other engineers.</li>
+                    <li>Enhanced the FBA software backend using Java and AWS, significantly improving application performance and scalability.</li>
+                    <li>Assisted in the integration of Machine Learning algorithms into FBA software, driving innovation and enhancing user experience.</li>
+                    <li>Authored comprehensive documentation, ensuring clarity and consistency across team communications.</li>
+                    <li>Revamped the incident management process, increasing resolution efficiency and reducing client impact time.</li>
+                    <li>Implemented performance monitoring tools, leading to a 20% reduction in application response times.</li>
+                    <li>Led an initiative to refactor legacy code, improving system maintainability and developer onboarding times.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Full Stack Software Developer</h3>
+                <p>Enhatch Inc. | Tulsa, OK | Apr 2021 – Jun 2021</p>
+                <ul>
+                    <li>Developed and enhanced front-end and back-end applications using ColdFusion and CFWheels Framework, adhering to MVC architecture and client requirements.</li>
+                    <li>Regularly tested code functionality and reported performance improvement suggestions, resulting in faster and more reliable code.</li>
+                    <li>Collaborated with the product manager to ensure Agile user stories were met, delivering high-quality software solutions.</li>
+                    <li>Implemented responsive design principles to ensure cross-platform compatibility and optimal user experience.</li>
+                    <li>Integrated RESTful API services, enhancing application communication with third-party services and increasing data throughput.</li>
+                    <li>Led a DevOps initiative to automate the deployment process, reducing deployment time and increasing release frequency.</li>
+                    <li>Mentored junior developers in best coding practices and modern development frameworks, raising team productivity.</li>
+                    <li>Conducted comprehensive security audits of the application stack, strengthening system security by identifying and mitigating potential vulnerabilities.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Software Developer</h3>
+                <p>University of Tulsa | Tulsa, OK | Aug 2016 – Jul 2020</p>
+                <ul>
+                    <li>Designed and implemented user-friendly web applications using JavaScript, Java, Python, and AWS, aligning with user needs and project requirements.</li>
+                    <li>Enhanced the functionality and performance of existing web applications by debugging and testing code.</li>
+                    <li>Collaborated with a team of engineers to develop software solutions, improving project delivery and software quality.</li>
+                    <li>Led the transition to a new tech stack, improving application performance and maintainability.</li>
+                    <li>Facilitated training sessions on new technologies for the team, enhancing overall technical proficiency and adaptability.</li>
+                    <li>Conducted usability testing sessions, gathering user feedback to refine and optimize application interfaces.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Software Developer Intern</h3>
+                <p>Halliburton | Houston, TX | Jun 2018 – Aug 2018</p>
+                <ul>
+                    <li>Developed three web services applications in Java for data file uploading, simulation parameters passing, and Spark application execution.</li>
+                    <li>Implemented and deployed the Ensemble Kalman Filter (EnKF) data assimilation algorithm on the AWS cloud platform, enhancing scalability and performance.</li>
+                    <li>Executed and assessed the performance of 100 simulation algorithms on the Apache Spark platform, focusing on precision and efficiency.</li>
+                    <li>Optimized cloud resource utilization, reducing operational costs while maintaining algorithm performance.</li>
+                    <li>Collaborated with cross-functional teams to integrate the EnKF algorithm into the existing workflow, improving data analysis throughput.</li>
+                    <li>Authored technical documentation on the deployment process and algorithm usage, facilitating knowledge transfer and increasing team efficiency.</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
-        <ul>
-            <li>
+        <div class="project-list">
+            <article class="project">
                 <h3>Complete Health Software Refactoring Initiative</h3>
-                <p><strong>Role:</strong> Software Engineer</p>
-                <p><strong>Company:</strong> SEQTEK | Tulsa, OK</p>
+                <p class="project-details"><strong>Role:</strong> Software Engineer</p>
+                <p class="project-details"><strong>Company:</strong> SEQTEK | Tulsa, OK</p>
                 <ul>
                     <li>Orchestrated a comprehensive refactoring strategy for healthcare software, enhancing system robustness and maintainability.</li>
                     <li>Integrated advanced React features and ASP.NET optimizations, improving application performance.</li>
@@ -338,11 +440,11 @@
                     <li>Developed a dynamic user interface, improving user engagement and reducing bounce rates.</li>
                     <li>Automated repetitive development tasks, increasing team productivity and reducing time-to-market.</li>
                 </ul>
-            </li>
-            <li>
+            </article>
+            <article class="project">
                 <h3>FBA UEBA User Interface Enhancement</h3>
-                <p><strong>Role:</strong> Software Engineer II (Full Stack Developer)</p>
-                <p><strong>Company:</strong> Forcepoint | Tulsa, OK</p>
+                <p class="project-details"><strong>Role:</strong> Software Engineer II (Full Stack Developer)</p>
+                <p class="project-details"><strong>Company:</strong> Forcepoint | Tulsa, OK</p>
                 <ul>
                     <li>Directed the UI enhancement project for FBA UEBA, focusing on user experience and design, leading to increased client satisfaction.</li>
                     <li>Implemented a series of performance improvements, reducing load times and enhancing application responsiveness.</li>
@@ -350,11 +452,11 @@
                     <li>Optimized application security measures, ensuring compliance with the latest industry standards and reducing vulnerability exposure.</li>
                     <li>Enhanced data visualization features, providing clients with more insightful analytics and reporting capabilities.</li>
                 </ul>
-            </li>
-            <li>
+            </article>
+            <article class="project">
                 <h3>Enhatch Web Application Overhaul</h3>
-                <p><strong>Role:</strong> Full Stack Software Developer</p>
-                <p><strong>Company:</strong> Enhatch Inc. | Tulsa, OK</p>
+                <p class="project-details"><strong>Role:</strong> Full Stack Software Developer</p>
+                <p class="project-details"><strong>Company:</strong> Enhatch Inc. | Tulsa, OK</p>
                 <ul>
                     <li>Led the redesign of the Enhatch web application, employing cutting-edge technologies to modernize both front-end and back-end systems.</li>
                     <li>Established a new benchmark for application performance, achieving a significant increase in speed and reliability through innovative coding practices.</li>
@@ -362,74 +464,164 @@
                     <li>Implemented modular design principles, facilitating easier updates and maintenance, and reducing downtime.</li>
                     <li>Streamlined the development workflow, incorporating agile methodologies that improved project turnaround time.</li>
                 </ul>
-            </li>
-            <li>
+            </article>
+            <article class="project">
                 <h3>EnKF Cloud Deployment for Reservoir Characterization</h3>
-                <p><strong>Role:</strong> Software Developer Intern</p>
-                <p><strong>Company:</strong> Halliburton | Houston, TX</p>
+                <p class="project-details"><strong>Role:</strong> Software Developer Intern</p>
+                <p class="project-details"><strong>Company:</strong> Halliburton | Houston, TX</p>
                 <ul>
                     <li>Contributed to a groundbreaking project deploying the Ensemble Kalman Filter algorithm on AWS, enhancing data assimilation for reservoir characterization.</li>
                     <li>Demonstrated exceptional collaboration and technical skills, contributing to a successful proof of concept within a stringent three-month deadline.</li>
                     <li>Acquired and applied new knowledge in reservoir engineering, showcasing adaptability and a strong aptitude for interdisciplinary learning.</li>
                     <li>Facilitated cross-departmental communication, bridging the gap between software development and geological analysis teams.</li>
-                    <li>Participated in knowledge-sharing sessions, presenting findings to stakeholders and contributing to the company’s innovation pipeline.</li>
+                    <li>Participated in knowledge-sharing sessions, presenting findings to stakeholders and contributing to the company's innovation pipeline.</li>
                 </ul>
-            </li>
-        </ul>
+            </article>
+        </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <form action="submit_form.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <input type="submit" value="Send Message">
-        </form>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <ul>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>C/C++</li>
+                    <li>Rust</li>
+                    <li>Golang</li>
+                    <li>Ruby</li>
+                    <li>PHP</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Web Development</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>React</li>
+                    <li>Angular</li>
+                    <li>Vue.js</li>
+                    <li>Node.js</li>
+                    <li>ASP.NET</li>
+                    <li>Django</li>
+                    <li>Flask</li>
+                    <li>Ruby on Rails</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Databases &amp; Cloud</h3>
+                <ul>
+                    <li>MySQL</li>
+                    <li>PostgreSQL</li>
+                    <li>MongoDB</li>
+                    <li>AWS</li>
+                    <li>Google Cloud</li>
+                    <li>Azure</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>DevOps &amp; Tools</h3>
+                <ul>
+                    <li>CI/CD</li>
+                    <li>Docker</li>
+                    <li>Kubernetes</li>
+                    <li>Git</li>
+                    <li>SVN</li>
+                    <li>Microservices</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>APIs &amp; Frameworks</h3>
+                <ul>
+                    <li>RESTful API</li>
+                    <li>GraphQL</li>
+                    <li>ColdFusion</li>
+                    <li>CFWheels Framework</li>
+                    <li>Apache Spark</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Methodologies &amp; Practices</h3>
+                <ul>
+                    <li>Agile</li>
+                    <li>Scrum</li>
+                    <li>Kanban</li>
+                    <li>TDD</li>
+                    <li>BDD</li>
+                    <li>Code Review</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Testing</h3>
+                <ul>
+                    <li>Unit Testing</li>
+                    <li>Integration Testing</li>
+                    <li>Jest</li>
+                    <li>Mocha</li>
+                    <li>Selenium</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Other</h3>
+                <ul>
+                    <li>Machine Learning</li>
+                    <li>Performance Optimization</li>
+                    <li>OWASP Top 10</li>
+                    <li>Secure Coding Practices</li>
+                </ul>
+            </div>
+        </div>
     </section>
 </main>
 
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+        <p>Email: <a href="mailto:shuddha7435@gmail.com">shuddha7435@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/shuddhac/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/shuddhac/</a></p>
+        <p>GitHub: <a href="https://github.com/shuddha2021" target="_blank" rel="noopener noreferrer">https://github.com/shuddha2021</a></p>
+    </div>
+</section>
+
 <footer>
-    <p>&copy; 2024 Shuddha Chowdhury</p>
+    <p>&copy; 2024 Shuddha Chowdhury. All rights reserved.</p>
 </footer>
 
 <script>
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
 
-            window.scrollTo({
-                top: targetElement.offsetTop - document.querySelector('header').offsetHeight,
-                behavior: 'smooth'
+        const skills = document.querySelectorAll('.skill');
+        skills.forEach(skill => {
+            skill.addEventListener('mouseenter', () => {
+                skill.style.backgroundColor = '#1a237e';
+            });
+            skill.addEventListener('mouseleave', () => {
+                skill.style.backgroundColor = '#4caf50';
             });
         });
     });
-
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-                section.classList.add('visible');
-            } else {
-                section.classList.remove('visible');
-            }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        window.dispatchEvent(new Event('scroll'));
-    });
 </script>
-
 </body>
 </html>
