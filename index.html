@@ -22,6 +22,7 @@
             --accent-light: rgba(74, 119, 226, 0.1); /* Light blue for hover/backgrounds */
             --border-color: #e1e5ea;    /* Light grey for borders */
             --shadow-color: rgba(100, 110, 130, 0.15); /* Softer shadow color */
+            --black-text: #000000;     /* Added black color variable */
 
             /* --- Standard Variables --- */
             --hover-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -317,7 +318,8 @@
         .about-tech li {
             position: relative;
             padding-left: 25px; /* More padding */
-            color: var(--secondary-text);
+            color: var(--black-text); /* CHANGED: Black text color */
+            font-weight: 600; /* CHANGED: Bolder font weight */
         }
         .about-tech li::before {
             content: "▹";
@@ -640,7 +642,7 @@
             #about { grid-template-columns: 1fr; gap: 40px; }
             .profile-pic-container { max-width: 280px; margin-bottom: 40px; order: -1; }
             #about .about-content { text-align: left; }
-            .about-tech { grid-template-columns: repeat(2, 1fr); }
+            .about-tech { grid-template-columns: repeat(2, 1fr); } /* Keep 2 columns on tablet */
 
             .card { padding: 25px; }
             .card h3 { font-size: 1.3em; }
@@ -661,7 +663,8 @@
             #hero .tagline { font-size: clamp(35px, 9vw, 55px); }
             .cta-button { padding: 12px 24px; font-size: 1em;}
             #contact .cta-button { padding: 14px 28px; font-size: 1em;}
-            .contact-email { font-size: 0.95em; } /* Adjust email font size */
+            .contact-email { font-size: 0.95em; }
+            .about-tech { grid-template-columns: 1fr; } /* Stack list on smallest screens */
         }
 
     </style>
@@ -884,7 +887,6 @@
             <p>I'm actively seeking new opportunities and collaborations. Whether you have a specific project in mind, a challenging role to fill, or just want to connect, my inbox is always open. Let's discuss how we can build something amazing together.</p>
             <a href="mailto:shuddha7435@gmail.com" class="cta-button">Say Hello</a>
 
-            <!-- Added Email Link Below Button -->
             <p class="contact-email">
                 or email me directly at: <a href="mailto:shuddha7435@gmail.com">shuddha7435@gmail.com</a>
             </p>
