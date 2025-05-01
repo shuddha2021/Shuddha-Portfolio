@@ -112,7 +112,7 @@
             padding: 8px 0;
             position: relative;
         }
-         nav ul li a::before {
+        nav ul li a::before {
             content: ''; position: absolute; width: 0; height: 2px;
             bottom: 4px; left: 50%; transform: translateX(-50%);
             background-color: var(--accent-color); visibility: hidden;
@@ -127,15 +127,27 @@
         section { padding: 100px 0; }
 
         /* Styles for sections that should animate */
-         section.reveal {
-             opacity: 0;
-             transform: translateY(30px);
-             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-         }
-         section.visible {
-             opacity: 1;
-             transform: translateY(0);
-         }
+        section.reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Introduction Section (Merged Hero + About) --- */
+        #introduction {
+            padding-top: 60px;
+            padding-bottom: 100px;
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 60px;
+            align-items: center;
+            opacity: 1;
+            transform: none;
+        }
 
         h1, h2, h3 {
             margin-bottom: 25px; color: var(--primary-text);
@@ -148,7 +160,7 @@
             background-color: var(--border-color); margin-left: 25px;
             position: relative; top: -1px;
         }
-         h3 { font-size: 1.4em; color: var(--primary-text); }
+        h3 { font-size: 1.4em; color: var(--primary-text); }
 
         p { margin-bottom: 18px; color: var(--secondary-text); max-width: 680px; font-size: 1.05em; }
         a { color: var(--accent-color); text-decoration: none; position: relative; font-weight: 500; transition: var(--hover-transition); }
@@ -163,43 +175,24 @@
         .cta-button:hover { background-color: var(--accent-light); transform: translateY(-2px); }
 
 
-        /* --- NEW Introduction Section (Merged Hero + About) --- */
-        #introduction {
-            padding-top: 60px;
-            padding-bottom: 100px;
-            display: grid;
-            grid-template-columns: 3fr 2fr; /* Ratio for text vs visual */
-            gap: 60px;
-            align-items: center; /* Vertically align grid items */
-            min-height: 80vh; /* Ensure it takes significant initial space */
-             opacity: 1; /* Visible by default */
-             transform: none; /* Visible by default */
-        }
-
         .intro-content .intro { color: var(--accent-color); font-size: 1.15em; margin-bottom: 15px; font-weight: 500; font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace; }
         .intro-content .name { color: var(--primary-text); margin-bottom: 8px; }
         .intro-content .tagline { font-size: clamp(40px, 7vw, 65px); line-height: 1.1; color: var(--secondary-text); margin-bottom: 25px; font-weight: 600;}
         .intro-content .brief { max-width: 600px; margin-bottom: 35px; color: var(--secondary-text); font-size: 1.1em; }
-        /* Keep brief slightly smaller than general paragraphs */
         .intro-content .cta-button { margin-top: 15px; }
 
         .intro-visuals {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* Center vertically if needed */
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
         }
-
         .profile-pic-container {
-            position: relative;
-            max-width: 300px; /* Adjust size as needed */
-            width: 100%;
-            margin: 0 auto 30px; /* Space below picture */
+            position: relative; max-width: 300px; width: 100%;
+            margin: 0 auto 30px;
         }
         .profile-wrapper {
-             display: block; position: relative; width: 100%;
-             border-radius: var(--border-radius); transition: var(--hover-transition);
-             box-shadow: var(--box-shadow); background-color: var(--secondary-bg);
+            display: block; position: relative; width: 100%;
+            border-radius: var(--border-radius); transition: var(--hover-transition);
+            box-shadow: var(--box-shadow); background-color: var(--secondary-bg);
         }
         .profile-pic {
             position: relative; border-radius: var(--border-radius);
@@ -210,37 +203,33 @@
             content: ''; display: block; position: absolute;
             width: calc(100% - 10px); height: calc(100% - 10px);
             border-radius: var(--border-radius); border: 2px solid var(--accent-color);
-            top: 15px; left: 15px; z-index: 0; /* Adjusted positioning */
+            top: 15px; left: 15px; z-index: 0;
             transition: var(--hover-transition); opacity: 0.6;
         }
-         .profile-wrapper:hover { transform: translate(-4px, -4px); box-shadow: 0 10px 25px -10px var(--shadow-color); }
+        .profile-wrapper:hover { transform: translate(-4px, -4px); box-shadow: 0 10px 25px -10px var(--shadow-color); }
         .profile-wrapper:hover + .profile-pic-container::after { top: 11px; left: 11px; opacity: 1; }
 
         /* Tech list within intro visuals */
         .about-tech {
-            list-style: none; padding: 0; width: 100%; max-width: 300px; /* Match pic width */
-            margin-top: 0; /* Align with pic container */
-            display: grid; grid-template-columns: repeat(2, 1fr); /* Keep 2 columns */
-            gap: 10px; font-size: 0.95em; /* Slightly smaller */
+            list-style: none; padding: 0; width: 100%; max-width: 300px;
+            margin-top: 0; display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 10px; font-size: 0.95em;
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
         }
-         .about-tech li {
-            position: relative; padding-left: 20px; /* Adjust padding */
+        .about-tech li {
+            position: relative; padding-left: 20px;
             color: var(--black-text); font-weight: 600;
-            line-height: 1.5; /* Adjust line height */
+            line-height: 1.5;
         }
-         .about-tech li::before {
+        .about-tech li::before {
             content: "▹"; position: absolute; left: 0; color: var(--accent-color);
             line-height: inherit; font-size: 1.1em;
-         }
-         .about-tech-title { /* Optional title for the list */
-             font-size: 1em;
-             color: var(--primary-text);
-             font-weight: 600;
-             margin-bottom: 15px;
-             text-align: center; /* Center title */
-             width: 100%; max-width: 300px;
-         }
+        }
+        .about-tech-title {
+            font-size: 1em; color: var(--primary-text); font-weight: 600;
+            margin-bottom: 15px; text-align: center;
+            width: 100%; max-width: 300px;
+        }
 
         /* --- Experience & Projects Section --- */
         .card-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
@@ -249,10 +238,7 @@
             border: 1px solid var(--border-color); box-shadow: var(--box-shadow);
             padding: 30px; transition: var(--hover-transition); position: relative; top: 0;
         }
-        .card:hover {
-            top: -6px; box-shadow: 0 12px 30px -10px var(--shadow-color);
-            border-color: rgba(74, 119, 226, 0.3);
-        }
+        .card:hover { top: -6px; box-shadow: 0 12px 30px -10px var(--shadow-color); border-color: rgba(74, 119, 226, 0.3); }
         .card h3 { color: var(--primary-text); margin-bottom: 8px; }
         .card .company-link { color: var(--accent-color); font-weight: 500; display: inline-block; }
         .card .company-link:hover { text-decoration: underline; text-decoration-color: rgba(74, 119, 226, 0.5); text-underline-offset: 3px; }
@@ -320,22 +306,41 @@
         .social-links a:hover { color: var(--accent-color); transform: translateY(-3px); }
 
         /* --- Footer --- */
-        footer { padding: 30px 0; text-align: center; color: var(--secondary-text); font-size: 0.9em; border-top: 1px solid var(--border-color); font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace; background-color: var(--secondary-bg); }
-        footer a { font-weight: 500; padding: 3px; }
-        footer a:hover { text-decoration: underline; text-decoration-color: rgba(74, 119, 226, 0.5); }
-
+        footer {
+            padding: 30px 0;
+            /* text-align: center; REMOVED - Handled by child */
+            color: var(--secondary-text);
+            font-size: 0.9em;
+            border-top: 1px solid var(--border-color);
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+            background-color: var(--secondary-bg);
+        }
+        /* NEW: Footer content wrapper for precise centering */
+        .footer-content {
+            max-width: 650px; /* Match contact section width */
+            margin: 0 auto; /* Center this div */
+            text-align: center; /* Center text inside this div */
+        }
+        .footer-content p {
+            margin-bottom: 0; /* Remove bottom margin from p */
+        }
+        .footer-content p strong {
+            font-weight: 600;
+            color: var(--primary-text);
+        }
 
         /* --- Responsiveness --- */
         @media (max-width: 1080px) {
-             h2::after { width: 200px; margin-left: 20px;}
-             .container { padding: 0 25px; }
-             #introduction { grid-template-columns: 1fr; /* Stack earlier */ text-align: center;}
-             .intro-content { order: 1; }
-             .intro-visuals { order: 0; margin-bottom: 40px; }
-             .profile-pic-container { max-width: 280px; }
-             .about-tech { justify-content: center; margin-left: auto; margin-right: auto; }
-             #hero .brief { margin-left: auto; margin-right: auto; } /* Center brief text */
-             .about-tech-title { text-align: center; }
+            h2::after { width: 200px; margin-left: 20px;}
+            .container { padding: 0 25px; }
+            #introduction { grid-template-columns: 1fr; text-align: center; gap: 40px; padding-top: 40px; padding-bottom: 80px;}
+            .intro-content { order: 1; }
+            .intro-visuals { order: 0; margin-bottom: 0px; }
+            .profile-pic-container { max-width: 280px; margin-bottom: 30px; }
+            .about-tech { justify-content: center; margin-left: auto; margin-right: auto; }
+            .intro-content .brief { margin-left: auto; margin-right: auto; }
+            .about-tech-title { text-align: center; }
+            .footer-content { max-width: 90%; } /* Allow footer text more space */
         }
 
         @media (max-width: 768px) {
@@ -344,27 +349,27 @@
             nav ul { display: none; }
             .menu-toggle { display: block; }
             main { padding-top: 80px; }
-             section { padding: 80px 0; } /* Consistent mobile padding */
-             #introduction { padding-top: 40px; padding-bottom: 60px; gap: 40px;} /* Adjust padding/gap */
+            section { padding: 80px 0; }
+            #introduction { padding-top: 30px; padding-bottom: 60px; gap: 30px;}
 
             h2::after { display: none; }
             h2 { justify-content: center; text-align: center; }
 
             #introduction { text-align: left; } /* Revert text align */
-             .intro-visuals { margin-bottom: 30px; }
-            .profile-pic-container { max-width: 250px; }
-             .about-tech { grid-template-columns: repeat(2, 1fr); max-width: none; } /* Go back to 2 columns */
-             .about-tech-title { text-align: left; } /* Align title left */
-              #hero .brief { margin-left: 0; margin-right: 0; } /* Align left */
+            .intro-visuals { margin-bottom: 0px; }
+            .profile-pic-container { max-width: 250px; margin-bottom: 30px; }
+            .about-tech { grid-template-columns: repeat(2, 1fr); max-width: none; }
+            .about-tech-title { text-align: left; }
+            .intro-content .brief { margin-left: 0; margin-right: 0; }
 
-             .card { padding: 25px; }
-             .card h3 { font-size: 1.3em; }
-             .card ul:not(.tech-list) li { font-size: 0.95em; padding-left: 25px;}
-             .tech-list li { font-size: 0.85em; padding: 5px 12px;}
+            .card { padding: 25px; }
+            .card h3 { font-size: 1.3em; }
+            .card ul:not(.tech-list) li { font-size: 0.95em; padding-left: 25px;}
+            .tech-list li { font-size: 0.85em; padding: 5px 12px;}
 
-             .skills-container { max-width: none; margin-top: 30px; }
-             .skills-grid { grid-template-columns: 1fr; gap: 20px; }
-             .skill-category { padding: 25px; }
+            .skills-container { max-width: none; margin-top: 30px; }
+            .skills-grid { grid-template-columns: 1fr; gap: 20px; }
+            .skill-category { padding: 25px; }
 
             #contact { max-width: 95%; padding-top: 40px; margin-bottom: 100px;}
             #contact p { font-size: 1.05em; }
@@ -372,17 +377,18 @@
         }
 
         @media (max-width: 480px) {
-             .container { padding: 0 15px; }
-             h1 { font-size: clamp(36px, 10vw, 55px); }
-             #hero .tagline { font-size: clamp(30px, 9vw, 50px); }
-             #introduction { padding-top: 30px; padding-bottom: 50px; gap: 30px; }
-             .cta-button { padding: 12px 24px; font-size: 1em;}
-             #contact .cta-button { padding: 14px 28px; font-size: 1em;}
-             .contact-email { font-size: 0.95em; }
-             .about-tech { grid-template-columns: 1fr; }
-             .tech-list li { font-size: 0.8em; padding: 4px 10px;}
-             .profile-pic-container { max-width: 200px;} /* Even smaller pic */
-             section { padding: 60px 0; }
+            .container { padding: 0 15px; }
+            h1 { font-size: clamp(36px, 10vw, 55px); }
+            .intro-content .tagline { font-size: clamp(30px, 9vw, 50px); }
+            #introduction { padding-top: 20px; padding-bottom: 40px; gap: 20px; }
+            .cta-button { padding: 12px 24px; font-size: 1em;}
+            #contact .cta-button { padding: 14px 28px; font-size: 1em;}
+            .contact-email { font-size: 0.95em; }
+            .about-tech { grid-template-columns: 1fr; }
+            .tech-list li { font-size: 0.8em; padding: 4px 10px;}
+            .profile-pic-container { max-width: 200px; margin-bottom: 25px;}
+            section { padding: 60px 0; }
+            .footer-content { max-width: 100%; padding: 0 10px; } /* Adjust footer on smallest */
         }
 
     </style>
@@ -391,9 +397,9 @@
 <header id="header">
     <div class="container">
         <nav>
-            <div class="logo"><a href="#introduction">SC</a></div> <!-- Link to new section -->
+            <div class="logo"><a href="#introduction">SC</a></div>
             <ul>
-                <li><a href="#introduction">About</a></li> <!-- Link to new section -->
+                <li><a href="#introduction">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -420,31 +426,31 @@
                 <a href="#contact" class="cta-button">Get In Touch</a>
             </div>
             <div class="intro-visuals">
-                 <div class="profile-pic-container">
-                     <div class="profile-wrapper">
+                <div class="profile-pic-container">
+                    <div class="profile-wrapper">
                         <img src="https://i.ibb.co/sgJSXm8/IMG-1494.jpg" alt="Shuddha Chowdhury" class="profile-pic">
-                     </div>
+                    </div>
                 </div>
-                 <div class="about-tech-title">Key Technologies:</div>
-                 <ul class="about-tech">
-                     <li>JavaScript (ES6+)</li>
-                     <li>React & Angular</li>
-                     <li>Node.js</li>
-                     <li>Python (Django/Flask)</li>
-                     <li>Java (Spring Boot)</li>
-                     <li>AWS Services</li>
-                     <li>Docker & K8s</li>
-                     <li>CI/CD Pipelines</li>
-                 </ul>
+                <div class="about-tech-title">Key Technologies:</div>
+                <ul class="about-tech">
+                    <li>JavaScript (ES6+)</li>
+                    <li>React & Angular</li>
+                    <li>Node.js</li>
+                    <li>Python (Django/Flask)</li>
+                    <li>Java (Spring Boot)</li>
+                    <li>AWS Services</li>
+                    <li>Docker & K8s</li>
+                    <li>CI/CD Pipelines</li>
+                </ul>
             </div>
         </section>
 
-        <!-- Removed original #about section -->
+        <!-- Experience, Projects, Skills, Contact Sections remain below -->
 
         <section id="experience" class="reveal">
             <h2><i class="far fa-briefcase" style="color: var(--accent-color);"></i> Where I've Worked</h2>
             <div class="card-grid">
-                 <article class="card">
+                <article class="card">
                     <h3>Software Engineer <span class="company-link">@ SEQTEK</span></h3>
                     <p class="date-location"><i class="far fa-calendar-alt"></i> Jul 2023 – Present | <i class="far fa-map-marker-alt"></i> Tulsa, OK</p>
                     <ul>
@@ -455,7 +461,7 @@
                         <li>Led the implementation and optimization of CI/CD pipelines, enabling faster, more reliable deployments and improving development velocity.</li>
                         <li>Championed the adoption of microservices architecture, enhancing system resilience and enabling independent scaling of services.</li>
                     </ul>
-                     <ul class="tech-list"><li>React</li><li>ASP.NET</li><li>CI/CD</li><li>Microservices</li><li>Mentorship</li><li>Architecture</li><li>Healthcare IT</li></ul>
+                    <ul class="tech-list"><li>React</li><li>ASP.NET</li><li>CI/CD</li><li>Microservices</li><li>Mentorship</li><li>Architecture</li><li>Healthcare IT</li></ul>
                 </article>
                 <article class="card">
                     <h3>Software Engineering Technical Expert <span class="company-link">@ Chegg, Inc.</span></h3>
@@ -467,9 +473,9 @@
                         <li>Developed and led engaging workshops on modern software engineering practices, significantly elevating the technical capabilities of participants.</li>
                         <li>Served as a dedicated technical mentor, cultivating a culture of continuous learning and professional growth within the engineering community.</li>
                     </ul>
-                     <ul class="tech-list"><li>Technical Coaching</li><li>Mentorship</li><li>Problem Solving</li><li>Communication</li><li>Workshops</li><li>EdTech</li></ul>
+                    <ul class="tech-list"><li>Technical Coaching</li><li>Mentorship</li><li>Problem Solving</li><li>Communication</li><li>Workshops</li><li>EdTech</li></ul>
                 </article>
-                 <article class="card">
+                <article class="card">
                     <h3>Software Engineer II (Full Stack) <span class="company-link">@ Forcepoint</span></h3>
                     <p class="date-location"><i class="far fa-calendar-alt"></i> Sep 2021 – Mar 2023 | <i class="far fa-map-marker-alt"></i> Tulsa, OK</p>
                     <ul>
@@ -482,7 +488,7 @@
                     </ul>
                     <ul class="tech-list"><li>React</li><li>Java</li><li>JavaScript</li><li>AWS</li><li>Machine Learning</li><li>Performance Tuning</li><li>Cybersecurity</li></ul>
                 </article>
-                 <article class="card">
+                <article class="card">
                     <h3>Full Stack Software Developer <span class="company-link">@ Enhatch Inc.</span></h3>
                     <p class="date-location"><i class="far fa-calendar-alt"></i> Apr 2021 – Jun 2021 | <i class="far fa-map-marker-alt"></i> Tulsa, OK</p>
                     <ul>
@@ -491,11 +497,11 @@
                         <li>Worked closely with product management within an Agile framework to translate user stories into high-quality, functional software features.</li>
                         <li>Integrated third-party RESTful APIs, expanding application capabilities and improving data interoperability.</li>
                         <li>Contributed to DevOps initiatives by automating deployment workflows, reducing manual effort and increasing release frequency.</li>
-                         <li>Performed security assessments and implemented remediation strategies based on findings, enhancing overall application security.</li>
+                        <li>Performed security assessments and implemented remediation strategies based on findings, enhancing overall application security.</li>
                     </ul>
-                     <ul class="tech-list"><li>ColdFusion</li><li>CFWheels</li><li>MVC</li><li>Agile</li><li>REST API</li><li>DevOps</li><li>Security</li><li>Medical Tech</li></ul>
+                    <ul class="tech-list"><li>ColdFusion</li><li>CFWheels</li><li>MVC</li><li>Agile</li><li>REST API</li><li>DevOps</li><li>Security</li><li>Medical Tech</li></ul>
                 </article>
-                 <article class="card">
+                <article class="card">
                     <h3>Software Developer <span class="company-link">@ University of Tulsa</span></h3>
                     <p class="date-location"><i class="far fa-calendar-alt"></i> Aug 2016 – Jul 2020 | <i class="far fa-map-marker-alt"></i> Tulsa, OK</p>
                     <ul>
@@ -506,7 +512,7 @@
                     </ul>
                     <ul class="tech-list"><li>JavaScript</li><li>Java</li><li>Python</li><li>AWS</li><li>Web Development</li><li>Debugging</li><li>Team Collaboration</li></ul>
                 </article>
-                 <article class="card">
+                <article class="card">
                     <h3>Software Developer Intern <span class="company-link">@ Halliburton</span></h3>
                     <p class="date-location"><i class="far fa-calendar-alt"></i> Jun 2018 – Aug 2018 | <i class="far fa-map-marker-alt"></i> Houston, TX</p>
                     <ul>
@@ -516,42 +522,42 @@
                         <li>Contributed to cloud resource optimization strategies, reducing operational costs while preserving algorithmic performance.</li>
                         <li>Produced technical documentation detailing deployment procedures and algorithm usage guidelines for internal teams.</li>
                     </ul>
-                     <ul class="tech-list"><li>Java</li><li>AWS</li><li>Apache Spark</li><li>Algorithms</li><li>Data Assimilation</li><li>Web Services</li><li>Energy Sector</li></ul>
+                    <ul class="tech-list"><li>Java</li><li>AWS</li><li>Apache Spark</li><li>Algorithms</li><li>Data Assimilation</li><li>Web Services</li><li>Energy Sector</li></ul>
                 </article>
             </div>
         </section>
 
         <section id="projects" class="reveal">
-             <h2><i class="far fa-lightbulb" style="color: var(--accent-color);"></i> Things I've Built</h2>
-             <div class="card-grid">
-                 <article class="card project-card">
+            <h2><i class="far fa-lightbulb" style="color: var(--accent-color);"></i> Things I've Built</h2>
+            <div class="card-grid">
+                <article class="card project-card">
                     <h3>Healthcare Software Modernization</h3>
                     <p>Led a significant refactoring initiative for a complex healthcare application. Modernized the frontend with React, optimized the ASP.NET backend, and established robust code quality standards, leading to enhanced performance and maintainability.</p>
-                     <ul class="tech-list"><li>React</li><li>ASP.NET</li><li>Refactoring</li><li>Performance</li><li>Healthcare IT</li><li>Code Quality</li></ul>
+                    <ul class="tech-list"><li>React</li><li>ASP.NET</li><li>Refactoring</li><li>Performance</li><li>Healthcare IT</li><li>Code Quality</li></ul>
                     <div class="project-links">
                         <!-- Links -->
                     </div>
                 </article>
-                 <article class="card project-card">
+                <article class="card project-card">
                     <h3>Enterprise UEBA Platform UI</h3>
-                     <p>Directed UI development for Forcepoint's User and Entity Behavior Analytics platform. Focused on creating an intuitive and responsive interface using React, improving data visualization and overall user experience for security analysts.</p>
-                     <ul class="tech-list"><li>React</li><li>JavaScript</li><li>UI/UX Design</li><li>Data Visualization</li><li>Cybersecurity</li></ul>
+                    <p>Directed UI development for Forcepoint's User and Entity Behavior Analytics platform. Focused on creating an intuitive and responsive interface using React, improving data visualization and overall user experience for security analysts.</p>
+                    <ul class="tech-list"><li>React</li><li>JavaScript</li><li>UI/UX Design</li><li>Data Visualization</li><li>Cybersecurity</li></ul>
                     <div class="project-links">
                         <!-- Links -->
                     </div>
                 </article>
-                 <article class="card project-card">
+                <article class="card project-card">
                     <h3>Medical Tech Web Application</h3>
-                     <p>Full-stack development for Enhatch's web platform using ColdFusion/CFWheels. Implemented features, integrated APIs, improved performance, and contributed to automating the deployment pipeline in the medical technology space.</p>
-                     <ul class="tech-list"><li>ColdFusion</li><li>CFWheels</li><li>Full Stack</li><li>API Integration</li><li>DevOps</li><li>Medical Tech</li></ul>
-                     <div class="project-links">
-                         <!-- Links -->
+                    <p>Full-stack development for Enhatch's web platform using ColdFusion/CFWheels. Implemented features, integrated APIs, improved performance, and contributed to automating the deployment pipeline in the medical technology space.</p>
+                    <ul class="tech-list"><li>ColdFusion</li><li>CFWheels</li><li>Full Stack</li><li>API Integration</li><li>DevOps</li><li>Medical Tech</li></ul>
+                    <div class="project-links">
+                        <!-- Links -->
                     </div>
                 </article>
                 <article class="card project-card">
                     <h3>Cloud-Based Reservoir Simulation (Internship)</h3>
-                     <p>Developed core Java web services and contributed to deploying the advanced Ensemble Kalman Filter algorithm on AWS using Apache Spark during an internship. Focused on enabling large-scale reservoir characterization and performance analysis.</p>
-                     <ul class="tech-list"><li>Java</li><li>AWS</li><li>Apache Spark</li><li>Algorithms</li><li>Scientific Computing</li><li>Energy Sector</li></ul>
+                    <p>Developed core Java web services and contributed to deploying the advanced Ensemble Kalman Filter algorithm on AWS using Apache Spark during an internship. Focused on enabling large-scale reservoir characterization and performance analysis.</p>
+                    <ul class="tech-list"><li>Java</li><li>AWS</li><li>Apache Spark</li><li>Algorithms</li><li>Scientific Computing</li><li>Energy Sector</li></ul>
                     <div class="project-links">
                         <!-- Links -->
                     </div>
@@ -561,9 +567,9 @@
 
         <section id="skills" class="reveal">
             <h2><i class="fas fa-cogs" style="color: var(--accent-color);"></i> Core Technologies</h2>
-             <div class="skills-container">
+            <div class="skills-container">
                 <div class="skills-grid">
-                     <div class="skill-category">
+                    <div class="skill-category">
                         <h3><i class="fas fa-laptop-code"></i> Languages</h3>
                         <ul>
                             <li>Java</li><li>Python</li><li>JavaScript (ES6+)</li><li>TypeScript</li><li>HTML5</li><li>CSS3 / SCSS</li><li>SQL</li><li>Go</li><li>Rust</li><li>C/C++</li>
@@ -590,7 +596,7 @@
                     <div class="skill-category">
                         <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
                         <ul>
-                             <li>AWS</li><li>Google Cloud (GCP)</li><li>Azure</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>Terraform</li><li>Serverless</li><li>Git</li>
+                            <li>AWS</li><li>Google Cloud (GCP)</li><li>Azure</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>Terraform</li><li>Serverless</li><li>Git</li>
                         </ul>
                     </div>
                     <div class="skill-category">
@@ -609,21 +615,23 @@
             <p>I'm actively seeking new opportunities and collaborations. Whether you have a specific project in mind, a challenging role to fill, or just want to connect, my inbox is always open. Let's discuss how we can build something amazing together.</p>
             <a href="mailto:shuddha7435@gmail.com" class="cta-button">Say Hello</a>
 
-             <p class="contact-email">
-                 <strong>or email me directly at:</strong> <a href="mailto:shuddha7435@gmail.com">shuddha7435@gmail.com</a>
-             </p>
+            <p class="contact-email">
+                <strong>or email me directly at:</strong> <a href="mailto:shuddha7435@gmail.com">shuddha7435@gmail.com</a>
+            </p>
 
-             <div class="social-links">
-                 <a href="https://github.com/shuddha2021" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                 <a href="https://www.linkedin.com/in/shuddhac/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-             </div>
+            <div class="social-links">
+                <a href="https://github.com/shuddha2021" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shuddhac/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
         </section>
     </div><!-- End .container -->
 </main>
 
 <footer>
     <div class="container">
-        <p>Designed & Built by Shuddha Chowdhury © 2025</p>
+        <div class="footer-content"> <!-- Added wrapper div -->
+            <p><strong>Designed & Built by Shuddha Chowdhury © 2025</strong></p>
+        </div>
     </div>
 </footer>
 
@@ -642,21 +650,19 @@
                     e.preventDefault();
                     const targetSection = document.querySelector(targetId);
                     if (targetSection) {
-                        // Special handling for #introduction link if header is already hidden
                         let headerOffset = header.offsetHeight;
                         if (header.classList.contains('hidden') && targetId === '#introduction') {
-                             // If header is hidden and linking to top, don't subtract offset
-                             headerOffset = -5; // Small negative offset to avoid slight overshoot
+                            headerOffset = -5;
                         } else {
-                            headerOffset += 5; // Normal offset for other sections
+                            headerOffset += 5;
                         }
 
                         const elementPosition = targetSection.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
                         window.scrollTo({
-                             top: offsetPosition,
-                             behavior: 'smooth'
+                            top: offsetPosition,
+                            behavior: 'smooth'
                         });
                     }
                 }
@@ -666,8 +672,8 @@
         // --- Dynamic Header Show/Hide on Scroll ---
         let lastScrollTop = 0;
         const scrollThreshold = 5;
-        let headerHeight = header.offsetHeight; // Initial height
-        window.addEventListener('resize', () => { headerHeight = header.offsetHeight; }); // Update on resize
+        let headerHeight = header.offsetHeight;
+        window.addEventListener('resize', () => { headerHeight = header.offsetHeight; });
 
         window.addEventListener('scroll', () => {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -676,21 +682,17 @@
                 return;
             }
 
-            // Adjust header hiding logic
             if (scrollTop > lastScrollTop && scrollTop > headerHeight){
-                // Scrolling Down
-                 header.classList.add('hidden');
+                header.classList.add('hidden');
             } else {
-                // Scrolling Up or near top
-                 header.classList.remove('hidden');
+                header.classList.remove('hidden');
             }
 
-             // Logic for scrolled background/shadow
-             if (scrollTop > 50) {
-                 header.classList.add('scrolled');
-             } else {
-                 header.classList.remove('scrolled');
-             }
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
